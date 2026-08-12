@@ -432,7 +432,7 @@ a.topbar__item:hover{color:#fff;}
    ========================================================================== */
 .site-footer{background:var(--navy-deep);color:rgba(255,255,255,.72);position:relative;overflow:hidden;padding-top:70px;}
 .footer__pattern{position:absolute;inset:0;opacity:.25;pointer-events:none;}
-.footer__grid{position:relative;z-index:1;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:50px;}
+.footer__grid{position:relative;z-index:1;display:grid;grid-template-columns:1.3fr .9fr 1fr .9fr .8fr;gap:40px;padding-bottom:50px;}
 .footer__col h4{color:#fff;font-family:'Poppins',sans-serif;font-size:1rem;margin-bottom:20px;letter-spacing:.02em;}
 .footer__col ul li{margin-bottom:12px;font-size:.92rem;}
 .footer__col ul li a:hover{color:var(--gold);}
@@ -445,6 +445,17 @@ a.topbar__item:hover{color:#fff;}
 .footer__contact li{display:flex;align-items:center;gap:10px;}
 .footer__contact i{color:var(--gold);width:16px;}
 .footer__emergency{color:var(--gold);font-weight:600;display:flex;align-items:center;gap:8px;}
+.footer__socials{display:flex;gap:10px;margin-top:2px;}
+.footer__social-link{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:50%;flex-shrink:0;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+  color:#fff;font-size:1.02rem;
+  transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease);
+}
+.footer__social-link:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);transform:translateY(-3px);}
+.footer__social-link.is-pending{opacity:.4;cursor:not-allowed;}
+.footer__social-link.is-pending:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);color:#fff;transform:none;}
 .footer__legal{position:relative;z-index:1;display:flex;justify-content:space-between;padding-block:22px;border-top:1px solid rgba(255,255,255,.1);font-size:.82rem;flex-wrap:wrap;gap:10px;}
 
 /* ==========================================================================
@@ -694,7 +705,7 @@ a.topbar__item:hover{color:#fff;}
     <div class="container">
       <div class="keyword-cloud__head">
         <h2>Our Services</h2>
-        <p>A quick look at what we cover for clients across Boksburg and wider Southern Africa.</p>
+        <p>A quick look at what we cover for clients across Gauteng and wider Southern Africa.</p>
       </div>
       <div class="keyword-cloud__list">
         <a href="#services" data-page-link="services" class="keyword-tag">Mechanical Services</a>
@@ -896,6 +907,15 @@ a.topbar__item:hover{color:#fff;}
     <div class="container">
 
       <div class="service-category reveal">
+        <div class="service-category__head"><i class="fa-solid fa-box-open"></i><h3>We Supply</h3></div>
+        <ul class="service-category__list">
+          <li><i class="fa-solid fa-check-circle"></i> Electrical Spares</li>
+          <li><i class="fa-solid fa-check-circle"></i> Mechanical Spares</li>
+          <li><i class="fa-solid fa-check-circle"></i> Pneumatic Spares</li>
+        </ul>
+      </div>
+
+      <div class="service-category reveal">
         <div class="service-category__head"><i class="fa-solid fa-bolt"></i><h3>Electrical Services</h3></div>
         <ul class="service-category__list">
           <li><i class="fa-solid fa-check-circle"></i> Residential Electrical Installations</li>
@@ -990,7 +1010,7 @@ a.topbar__item:hover{color:#fff;}
         <!-- PLACEHOLDER IMAGE: replace with a real project photo -->
         <div class="project-card reveal">
           <img class="project-card__img" src="https://loremflickr.com/600/750/electrician,industrial?lock=1" alt="Industrial electrical installation" loading="lazy">
-          <div class="project-card__overlay"><h3>Industrial Electrical Installation</h3></div>
+          <div class="project-card__overlay"><h3>Industrial Electrical Installation LV and MV</h3></div>
         </div>
         <!-- PLACEHOLDER IMAGE: replace with a real project photo -->
         <div class="project-card reveal">
@@ -1156,6 +1176,15 @@ a.topbar__item:hover{color:#fff;}
         <li class="footer__emergency"><i class="fa-solid fa-triangle-exclamation"></i> Emergency: 24/7</li>
       </ul>
     </div>
+
+    <div class="footer__col">
+      <h4>Our Socials</h4>
+      <div class="footer__socials">
+        <a class="footer__social-link" id="socialFacebook" href="#" target="_blank" rel="noopener" aria-label="Optimum Current Solutions on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="footer__social-link is-pending" id="socialInstagram" href="#" aria-label="Optimum Current Solutions on Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="footer__social-link is-pending" id="socialLinkedin" href="#" aria-label="Optimum Current Solutions on LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      </div>
+    </div>
   </div>
 
   <div class="footer__legal container">
@@ -1207,6 +1236,37 @@ const CONTACT = {
   // straight into a chat with this number, message pre-filled.
   const waLink = 'https://wa.me/' + (CONTACT.whatsappNumber || '') + '?text=' + encodeURIComponent(CONTACT.whatsappMessage);
   document.querySelectorAll('#whatsappBtn, #whatsappInline, #whatsappFooter').forEach(function(el){ el.setAttribute('href', waLink); });
+})();
+
+/* ==========================================================================
+   SOCIAL LINKS: single point of truth, same pattern as CONTACT above.
+   Add the Instagram and LinkedIn URLs here as soon as those pages exist
+   and the icons in the footer will go live automatically.
+   ========================================================================== */
+const SOCIALS = {
+  facebook: 'https://www.facebook.com/profile.php?id=100094516447011',
+  instagram: '',   // add the Instagram page URL here once it's created
+  linkedin: ''      // add the LinkedIn page URL here once it's created
+};
+
+(function initSocialLinks(){
+  function setSocial(id, url){
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (url){
+      el.setAttribute('href', url);
+      el.classList.remove('is-pending');
+      el.removeAttribute('title');
+    } else {
+      el.setAttribute('href', '#');
+      el.classList.add('is-pending');
+      el.setAttribute('title', 'Coming soon');
+      el.addEventListener('click', function(e){ e.preventDefault(); });
+    }
+  }
+  setSocial('socialFacebook', SOCIALS.facebook);
+  setSocial('socialInstagram', SOCIALS.instagram);
+  setSocial('socialLinkedin', SOCIALS.linkedin);
 })();
 
 /* ==========================================================================
