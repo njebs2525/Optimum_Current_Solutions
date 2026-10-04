@@ -386,12 +386,16 @@ a.topbar__item:hover{color:#fff;}
 .project-card__overlay{
   position:absolute;inset:0;z-index:2;padding:20px;display:flex;flex-direction:column;justify-content:flex-end;
   background:linear-gradient(0deg,rgba(10,22,32,.92) 10%,rgba(10,22,32,.15) 65%,transparent 100%);
-  transform:translateY(8px);opacity:.92;transition:transform .3s var(--ease);
+  opacity:.92;
 }
-.project-card:hover .project-card__overlay{transform:translateY(0);}
 .project-card:hover{box-shadow:var(--shadow-md);}
 .project-card__overlay h3{color:#fff;font-size:1.02rem;margin-bottom:4px;}
 .project-card__overlay span{color:var(--gold);font-size:.8rem;font-weight:600;letter-spacing:.03em;}
+.project-card__overlay .btn{align-self:flex-start;margin-top:10px;}
+.project-gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.project-gallery__image{aspect-ratio:1/1;overflow:hidden;border-radius:var(--radius);background:var(--navy-soft) url("project-image-placeholder.svg") center/cover no-repeat;box-shadow:var(--shadow-sm);}
+.project-gallery__image img{width:100%;height:100%;object-fit:cover;}
+.project-gallery__image img[src^="https://loremflickr.com"]{visibility:hidden;}
 .gallery-note{margin-top:28px;text-align:center;color:var(--text-muted);font-size:.9rem;font-style:italic;}
 
 /* ==========================================================================
@@ -499,6 +503,7 @@ a.topbar__item:hover{color:#fff;}
   .service-category{grid-template-columns:1fr;gap:18px;}
   .grid--4{grid-template-columns:repeat(2,1fr);}
   .gallery-grid{grid-template-columns:repeat(2,1fr);}
+  .project-gallery-grid{grid-template-columns:repeat(2,1fr);}
   .trustbar__grid{grid-template-columns:repeat(2,1fr);row-gap:22px;}
   .footer__grid{grid-template-columns:1fr 1fr;}
   .contact-info-grid{grid-template-columns:repeat(2,1fr);}
@@ -537,6 +542,7 @@ a.topbar__item:hover{color:#fff;}
 
   .grid--2,.grid--3,.grid--4{grid-template-columns:1fr;}
   .gallery-grid{grid-template-columns:1fr 1fr;gap:14px;}
+  .project-gallery-grid{gap:14px;}
   .contact-info-grid{grid-template-columns:1fr;}
   .form-row{grid-template-columns:1fr;}
   .footer__grid{grid-template-columns:1fr;gap:34px;padding-bottom:34px;}
@@ -559,6 +565,7 @@ a.topbar__item:hover{color:#fff;}
   .hero{padding-block:48px 52px;}
   .hero__mark-wrap{width:200px;height:200px;right:-100px;opacity:.4;}
   .gallery-grid{grid-template-columns:1fr;}
+  .project-gallery-grid{grid-template-columns:1fr;}
   .trustbar__grid{grid-template-columns:1fr;}
   .contact-form{padding:26px 20px;}
   .cta-banner__inner h2{font-size:1.25rem;}
@@ -766,7 +773,6 @@ a.topbar__item:hover{color:#fff;}
         <a href="#about" data-page-link="about" class="btn btn-primary">Learn More About Us</a>
       </div>
       <div class="about-preview__visual reveal">
-        <!-- PLACEHOLDER IMAGE: replace with a real team / workshop photo -->
         <div class="visual-panel">
           <img class="visual-panel__img" src="pic_2.jpg" alt="Optimum Current Solutions team at work" loading="lazy">
           <div class="visual-panel__stats">
@@ -1010,27 +1016,151 @@ a.topbar__item:hover{color:#fff;}
         <!-- PLACEHOLDER IMAGE: replace with a real project photo -->
         <div class="project-card reveal">
           <img class="project-card__img" src="https://loremflickr.com/600/750/electrician,industrial?lock=1" alt="Industrial electrical installation" loading="lazy">
-          <div class="project-card__overlay"><h3>Industrial Electrical Installation LV and MV</h3></div>
+          <div class="project-card__overlay"><h3>Industrial Electrical Installation LV and MV</h3><a href="#project-industrial" data-page-link="project-industrial" data-page-history="push" class="btn btn-primary btn-sm">See more</a></div>
         </div>
         <!-- PLACEHOLDER IMAGE: replace with a real project photo -->
         <div class="project-card reveal">
           <img class="project-card__img" src="https://loremflickr.com/600/750/controlpanel,electrical?lock=2" alt="Custom control panel build" loading="lazy">
-          <div class="project-card__overlay"><h3>Custom Control Panel</h3></div>
+          <div class="project-card__overlay"><h3>Custom Control Panel</h3><a href="#project-control-panel" data-page-link="project-control-panel" data-page-history="push" class="btn btn-primary btn-sm">See more</a></div>
         </div>
         <!-- PLACEHOLDER IMAGE: replace with a real project photo -->
         <div class="project-card reveal">
           <img class="project-card__img" src="https://loremflickr.com/600/750/wiring,industrial?lock=3" alt="MCC panel build" loading="lazy">
-          <div class="project-card__overlay"><h3>MCC Panel Build</h3></div>
+          <div class="project-card__overlay"><h3>MCC Panel Build</h3><a href="#project-mcc-panel" data-page-link="project-mcc-panel" data-page-history="push" class="btn btn-primary btn-sm">See more</a></div>
         </div>
         <!-- PLACEHOLDER IMAGE: replace with a real project photo -->
         <div class="project-card reveal">
           <img class="project-card__img" src="https://loremflickr.com/600/750/electrician,construction?lock=4" alt="Distribution board installation" loading="lazy">
-          <div class="project-card__overlay"><h3>Distribution Board Installation</h3></div>
+          <div class="project-card__overlay"><h3>Distribution Board Installation</h3><a href="#project-distribution-board" data-page-link="project-distribution-board" data-page-history="push" class="btn btn-primary btn-sm">See more</a></div>
         </div>
       </div>
     </div>
   </section>
 
+</section>
+
+<!-- ============================================================
+     PAGE: INDUSTRIAL ELECTRICAL INSTALLATION GALLERY
+     ============================================================ -->
+<section class="page" id="page-project-industrial" data-page="project-industrial">
+  <section class="page-banner">
+    <svg class="page-banner__pattern" preserveAspectRatio="none" width="100%" height="100%" aria-hidden="true"><rect width="100%" height="100%" fill="url(#circuit-pattern)"></rect></svg>
+    <div class="container page-banner__inner">
+      <h1>Industrial Electrical Installation LV and MV</h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="#projects" data-page-link="projects">Projects</a><span>/</span>Industrial Electrical Installation</nav>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="project-gallery-grid reveal-group">
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/industrial,electrical?lock=101" alt="Temporary industrial electrical project image 1" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/industrial,electrical?lock=102" alt="Temporary industrial electrical project image 2" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/industrial,electrical?lock=103" alt="Temporary industrial electrical project image 3" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/industrial,electrical?lock=104" alt="Temporary industrial electrical project image 4" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/industrial,electrical?lock=105" alt="Temporary industrial electrical project image 5" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/industrial,electrical?lock=106" alt="Temporary industrial electrical project image 6" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/industrial,electrical?lock=107" alt="Temporary industrial electrical project image 7" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/industrial,electrical?lock=108" alt="Temporary industrial electrical project image 8" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/industrial,electrical?lock=109" alt="Temporary industrial electrical project image 9" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/industrial,electrical?lock=110" alt="Temporary industrial electrical project image 10" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/industrial,electrical?lock=111" alt="Temporary industrial electrical project image 11" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/industrial,electrical?lock=112" alt="Temporary industrial electrical project image 12" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============================================================
+     PAGE: CUSTOM CONTROL PANEL GALLERY
+     ============================================================ -->
+<section class="page" id="page-project-control-panel" data-page="project-control-panel">
+  <section class="page-banner">
+    <svg class="page-banner__pattern" preserveAspectRatio="none" width="100%" height="100%" aria-hidden="true"><rect width="100%" height="100%" fill="url(#circuit-pattern)"></rect></svg>
+    <div class="container page-banner__inner">
+      <h1>Custom Control Panel</h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="#projects" data-page-link="projects">Projects</a><span>/</span>Custom Control Panel</nav>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="project-gallery-grid reveal-group">
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/control,panel?lock=201" alt="Temporary custom control panel project image 1" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/control,panel?lock=202" alt="Temporary custom control panel project image 2" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/control,panel?lock=203" alt="Temporary custom control panel project image 3" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/control,panel?lock=204" alt="Temporary custom control panel project image 4" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/control,panel?lock=205" alt="Temporary custom control panel project image 5" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/control,panel?lock=206" alt="Temporary custom control panel project image 6" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/control,panel?lock=207" alt="Temporary custom control panel project image 7" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/control,panel?lock=208" alt="Temporary custom control panel project image 8" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/control,panel?lock=209" alt="Temporary custom control panel project image 9" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/control,panel?lock=210" alt="Temporary custom control panel project image 10" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/control,panel?lock=211" alt="Temporary custom control panel project image 11" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/control,panel?lock=212" alt="Temporary custom control panel project image 12" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============================================================
+     PAGE: MCC PANEL GALLERY
+     ============================================================ -->
+<section class="page" id="page-project-mcc-panel" data-page="project-mcc-panel">
+  <section class="page-banner">
+    <svg class="page-banner__pattern" preserveAspectRatio="none" width="100%" height="100%" aria-hidden="true"><rect width="100%" height="100%" fill="url(#circuit-pattern)"></rect></svg>
+    <div class="container page-banner__inner">
+      <h1>MCC Panel Build</h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="#projects" data-page-link="projects">Projects</a><span>/</span>MCC Panel Build</nav>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="project-gallery-grid reveal-group">
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/motor,control,panel?lock=301" alt="Temporary MCC panel project image 1" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/motor,control,panel?lock=302" alt="Temporary MCC panel project image 2" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/motor,control,panel?lock=303" alt="Temporary MCC panel project image 3" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/motor,control,panel?lock=304" alt="Temporary MCC panel project image 4" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/motor,control,panel?lock=305" alt="Temporary MCC panel project image 5" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/motor,control,panel?lock=306" alt="Temporary MCC panel project image 6" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/motor,control,panel?lock=307" alt="Temporary MCC panel project image 7" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/motor,control,panel?lock=308" alt="Temporary MCC panel project image 8" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/motor,control,panel?lock=309" alt="Temporary MCC panel project image 9" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/motor,control,panel?lock=310" alt="Temporary MCC panel project image 10" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/motor,control,panel?lock=311" alt="Temporary MCC panel project image 11" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/motor,control,panel?lock=312" alt="Temporary MCC panel project image 12" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============================================================
+     PAGE: DISTRIBUTION BOARD GALLERY
+     ============================================================ -->
+<section class="page" id="page-project-distribution-board" data-page="project-distribution-board">
+  <section class="page-banner">
+    <svg class="page-banner__pattern" preserveAspectRatio="none" width="100%" height="100%" aria-hidden="true"><rect width="100%" height="100%" fill="url(#circuit-pattern)"></rect></svg>
+    <div class="container page-banner__inner">
+      <h1>Distribution Board Installation</h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="#projects" data-page-link="projects">Projects</a><span>/</span>Distribution Board Installation</nav>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="project-gallery-grid reveal-group">
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/electrical,distribution,board?lock=401" alt="Temporary distribution board project image 1" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/electrical,distribution,board?lock=402" alt="Temporary distribution board project image 2" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/electrical,distribution,board?lock=403" alt="Temporary distribution board project image 3" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/electrical,distribution,board?lock=404" alt="Temporary distribution board project image 4" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/electrical,distribution,board?lock=405" alt="Temporary distribution board project image 5" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/electrical,distribution,board?lock=406" alt="Temporary distribution board project image 6" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/electrical,distribution,board?lock=407" alt="Temporary distribution board project image 7" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/electrical,distribution,board?lock=408" alt="Temporary distribution board project image 8" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/electrical,distribution,board?lock=409" alt="Temporary distribution board project image 9" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/electrical,distribution,board?lock=410" alt="Temporary distribution board project image 10" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/electrical,distribution,board?lock=411" alt="Temporary distribution board project image 11" loading="lazy"></div>
+        <div class="project-gallery__image reveal"><img src="https://loremflickr.com/600/450/electrical,distribution,board?lock=412" alt="Temporary distribution board project image 12" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
 </section>
 
 <!-- ============================================================
@@ -1300,7 +1430,7 @@ const hamburgerBtn = document.getElementById('hamburgerBtn');
 const mainNav = document.getElementById('mainNav');
 const siteHeader = document.getElementById('siteHeader');
 
-function goToPage(pageId, updateHash){
+function goToPage(pageId, updateHash, pushHistory){
   let matched = false;
   pages.forEach(function(p){
     const isMatch = p.dataset.page === pageId;
@@ -1313,7 +1443,10 @@ function goToPage(pageId, updateHash){
     link.classList.toggle('is-active', link.dataset.pageLink === pageId);
   });
 
-  if (updateHash !== false) history.replaceState(null, '', '#' + pageId);
+  if (updateHash !== false) {
+    if (pushHistory) history.pushState(null, '', '#' + pageId);
+    else history.replaceState(null, '', '#' + pageId);
+  }
   window.scrollTo({ top: 0, behavior: 'auto' });
   closeMobileMenu();
   refreshRevealObservers();
@@ -1322,7 +1455,7 @@ function goToPage(pageId, updateHash){
 navLinks.forEach(function(link){
   link.addEventListener('click', function(e){
     e.preventDefault();
-    goToPage(link.dataset.pageLink);
+    goToPage(link.dataset.pageLink, true, link.dataset.pageHistory === 'push');
   });
 });
 
